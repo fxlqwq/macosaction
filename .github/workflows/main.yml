@@ -25,7 +25,7 @@ jobs:
         run: |
           sudo mkdir /Users/fxlqwq
           sudo chown fxlqwq:staff /Users/fxlqwq
-          echo "Aa135792468+-" | sudo dscl . -passwd /Users/fxlqwq -
+          echo "R#SDZwEtOSBuS$cc" | sudo dscl . -passwd /Users/fxlqwq -
           sudo dseditgroup -o edit -a fxlqwq -t user admin
       - name: Install Homebrew
         run: |
