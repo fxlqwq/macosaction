@@ -12,27 +12,15 @@ jobs:
   install_ngrok:
     runs-on: macos-latest  # 选择 macOS 作为运行环境
     steps:
-      - name: set user and passwd
-        run: |
-          sudo dscl . -create /Users/fxlqwq
-          sudo dscl . -create /Users/fxlqwq UserShell /bin/bash
-          sudo dscl . -create /Users/fxlqwq RealName "fxlqwq"
-          sudo dscl . -create /Users/fxlqwq UniqueID 5100
-          sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
-          sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/fxlqwq
-          
       - name: err 
         run: |
-          sudo mkdir /Users/fxlqwq
-          sudo chown fxlqwq:staff /Users/fxlqwq
           sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
-          sudo dseditgroup -o edit -a fxlqwq -t user admin
       - name: Install Homebrew
         run: |
           # 安装 Homebrew，如果已经安装，跳过这一步
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
-          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users fxlqwq -privs -all
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers
           
 
       - name: Install ngrok
