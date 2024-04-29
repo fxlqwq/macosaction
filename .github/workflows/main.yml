@@ -14,20 +14,21 @@ jobs:
     steps:
       - name: err 
         run: |
-          sudo dscl . -create /Users/newuser
-          sudo dscl . -create /Users/newuser UserShell /bin/bash
-          sudo dscl . -create /Users/newuser RealName "New User"
-          sudo dscl . -create /Users/newuser UniqueID 5100
-          sudo dscl . -create /Users/newuser PrimaryGroupID 20
-          sudo dscl . -create /Users/newuser NFSHomeDirectory /Users/newuser
-          sudo dscl . -passwd /Users/newuser Aa135792468+-
+          sudo dscl . -create /Users/fxlqwq
+          sudo dscl . -create /Users/fxlqwq UserShell /bin/bash
+          sudo dscl . -create /Users/fxlqwq RealName "New User"
+          sudo dscl . -create /Users/fxlqwq UniqueID 5100
+          sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
+          sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/fxlqwq
+          sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
+          sudo dseditgroup -o edit -a fxlqwq -t user admin
       - name: Install Homebrew
         run: |
           # 安装 Homebrew，如果已经安装，跳过这一步
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -specifiedUsers
-          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users newuser -privs -all
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users fxlqwq -privs -all
           
 
       - name: Install ngrok
