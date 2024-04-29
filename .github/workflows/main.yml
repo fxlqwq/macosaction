@@ -20,7 +20,7 @@ jobs:
           sudo dscl . -create /Users/fxlqwq UniqueID 5100
           sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
           sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/newuser
-          echo "Aa2980688" | sudo dscl . -passwd /Users/fxlqwq -
+          echo "Aa135792468+-" | sudo dscl . -passwd /Users/fxlqwq -
           sudo mkdir /Users/fxlqwq
           sudo chown fxlqwq:staff /Users/fxlqwq
           sudo dseditgroup -o edit -a fxlqwq -t user admin
