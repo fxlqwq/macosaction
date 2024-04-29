@@ -31,6 +31,7 @@ jobs:
           brew update
           brew install x11vnc
           echo "fxlqwq" > vncpass.txt
+          mkdir ~/.vnc
           sudo x11vnc -storepasswd "$(cat vncpass.txt)" ~/.vnc/passwd
           sudo x11vnc -forever -usepw -shared -rfbport 5900
 
