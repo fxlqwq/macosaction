@@ -1,4 +1,4 @@
-name: Configure macOS Remote Management
+name: Install ngrok
 
 on:
   push:
@@ -9,11 +9,26 @@ on:
       - main
 
 jobs:
-  configure_remote_management:
-    runs-on: macos-latest  # 在 macOS 上运行
+  install_ngrok:
+    runs-on: macos-latest  # 选择 macOS 作为运行环境
     steps:
-      - name: Configure ARDAgent Access
+      - name: Install Homebrew
         run: |
-          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
-          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -clientopts -setvnclegacy -vnclegacy yes -setvncpw -vncpw fxlqwq
-          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers
+          # 安装 Homebrew，如果已经安装，跳过这一步
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      - name: Install ngrok
+        run: |
+          brew tap ngrok/ngrok
+          brew install ngrok/ngrok/ngrok
+
+      - name: Configure ngrok
+        env:
+          NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}  # 通过 GitHub Secrets 存储 authtoken
+        run: |
+          sudo ngrok config add-authtoken $NGROK_AUTHTOKEN
+
+      - name: Start ngrok
+        run: |
+          # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
+          sudo ngrok tcp localhost:5900
