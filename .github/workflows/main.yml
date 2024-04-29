@@ -33,7 +33,7 @@ jobs:
           echo "fxlqwq" > vncpass.txt
           mkdir ~/.vnc
           sudo x11vnc -storepasswd "$(cat vncpass.txt)" ~/.vnc/passwd
-          sudo x11vnc -forever -usepw -shared -rfbport 5900
+          x11vnc -forever -usepw -shared -rfbport 5901
 
 
       - name: Install ngrok
@@ -48,4 +48,4 @@ jobs:
       - name: Start ngrok
         run: |
           # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
-          sudo ngrok tcp 5900
+          sudo ngrok tcp 5901
