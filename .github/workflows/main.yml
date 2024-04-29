@@ -20,6 +20,7 @@ jobs:
           sudo dscl . -create /Users/fxlqwq UniqueID 5100
           sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
           sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/newuser
+          sudo pwpolicy -getglobalpolicy
           echo "PHjSswOoRgRwmOvsEgUbTj1Tb7Ku" | sudo dscl . -passwd /Users/fxlqwq -
           sudo mkdir /Users/fxlqwq
           sudo chown fxlqwq:staff /Users/fxlqwq
