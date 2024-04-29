@@ -26,7 +26,7 @@ jobs:
         run: |
           # 安装 Homebrew，如果已经安装，跳过这一步
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install tigervnc
+          brew install tiger-vnc
           vncserver :0
 
 
