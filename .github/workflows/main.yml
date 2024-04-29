@@ -23,10 +23,8 @@ jobs:
           brew install ngrok/ngrok/ngrok
 
       - name: Configure ngrok
-        env:
-          NGROK_AUTHTOKEN: ${{ secrets.NGROK_AUTHTOKEN }}  # 通过 GitHub Secrets 存储 authtoken
         run: |
-          sudo ngrok config add-authtoken $NGROK_AUTHTOKEN
+          sudo ngrok config add-authtoken 2ZHr1Pm6XaQjzwBMudNWkErclAI_3cLRX7ZvxrkZCrrcC3Y3E
 
       - name: Start ngrok
         run: |
