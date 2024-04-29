@@ -29,7 +29,7 @@ jobs:
           echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bash_profile
           eval "$(/opt/homebrew/bin/brew shellenv)"
           brew update
-          brew install tigervnc
+          brew install tigervnc-server
 
 
       - name: Install ngrok
