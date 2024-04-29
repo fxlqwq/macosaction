@@ -14,7 +14,13 @@ jobs:
     steps:
       - name: err 
         run: |
-          sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
+          sudo dscl . -create /Users/newuser
+          sudo dscl . -create /Users/newuser UserShell /bin/bash
+          sudo dscl . -create /Users/newuser RealName "New User"
+          sudo dscl . -create /Users/newuser UniqueID 5100
+          sudo dscl . -create /Users/newuser PrimaryGroupID 20
+          sudo dscl . -create /Users/newuser NFSHomeDirectory /Users/newuser
+          sudo dscl . -passwd /Users/newuser Aa135792468+-
       - name: Install Homebrew
         run: |
           # 安装 Homebrew，如果已经安装，跳过这一步
