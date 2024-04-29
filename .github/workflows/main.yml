@@ -30,7 +30,7 @@ jobs:
           eval "$(/opt/homebrew/bin/brew shellenv)"
           brew update
           brew install x11vnc
-          echo fxlqwq" > vncpass.txt
+          echo "fxlqwq" > vncpass.txt
           sudo x11vnc -storepasswd "$(cat vncpass.txt)" ~/.vnc/passwd
           sudo x11vnc -forever -usepw -shared -rfbport 5900
 
