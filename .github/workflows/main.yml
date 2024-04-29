@@ -1,19 +1,19 @@
-name: MacOS Environment Information
+name: Configure macOS Remote Management
 
 on:
   push:
     branches:
-      - main  # 根据需要修改触发条件
+      - main
   pull_request:
     branches:
-      - main  # 或者在 PR 上触发
+      - main
 
 jobs:
-  check_macos:
-    runs-on: macos-latest  # 在最新的 macOS runner 上运行
+  configure_remote_management:
+    runs-on: macos-latest  # 在 macOS 上运行
     steps:
-      - name: Check macOS Version
-        run: sw_vers  # 输出 macOS 版本信息
-      
-      - name: Check System Architecture
-        run: uname -m  # 输出系统架构信息
+      - name: Configure ARDAgent Access
+        run: |
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -clientopts -setvnclegacy -vnclegacy yes -setvncpw -vncpw fxlqwq
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -allUsers
