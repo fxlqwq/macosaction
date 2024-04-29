@@ -28,10 +28,7 @@ jobs:
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bash_profile
           eval "$(/opt/homebrew/bin/brew shellenv)"
-          brew install tiger-vnc
-          ls /opt/homebrew/bin/*vnc*
-          vncserver -localhost no -geometry 1024x768
-          vncserver -list
+          sudo apt-get install vnc4server -y
 
 
       - name: Install ngrok
