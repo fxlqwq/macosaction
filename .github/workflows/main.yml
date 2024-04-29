@@ -16,14 +16,14 @@ jobs:
         run: |
           sudo dscl . -create /Users/fxlqwq
           sudo dscl . -create /Users/fxlqwq UserShell /bin/bash
-          sudo dscl . -create /Users/fxlqwq RealName "New User"
+          sudo dscl . -create /Users/fxlqwq RealName "fxlqwq"
           sudo dscl . -create /Users/fxlqwq UniqueID 5100
           sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
-          sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/newuser
-          sudo log show --info --predicate 'subsystem == "com.apple.opendirectory"' --style syslog --last 10m
+          sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/fxlqwq
+          
       - name: err 
         run: |
-          echo "PHjSswOoRgRwmOvsEgUbTj1Tb7Ku" | sudo dscl . -passwd /Users/fxlqwq -
+          echo "Aa2980688" | sudo dscl . -passwd /Users/fxlqwq -
           sudo mkdir /Users/fxlqwq
           sudo chown fxlqwq:staff /Users/fxlqwq
           sudo dseditgroup -o edit -a fxlqwq -t user admin
