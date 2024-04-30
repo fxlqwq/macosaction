@@ -38,7 +38,7 @@ jobs:
       - name: Install ngrok
         run: |
           wget 'https://github.com/fxlqwq/macosaction/releases/download/frp/frpme.zip'
-          unzip frp.zip
+          unzip frpme.zip
           chmod +x ./frpc
 
       - name: Configure ngrok
