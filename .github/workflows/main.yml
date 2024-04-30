@@ -33,9 +33,9 @@ jobs:
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -menu
           ps aux | grep ARDAgent
           system_profiler SPDisplaysDataType
-
-          
-
+          brew install displayplacer
+          displayplacer "id:GPU res:1920x1080"
+          system_profiler SPDisplaysDataType
       - name: Install ngrok
         run: |
           brew tap ngrok/ngrok
