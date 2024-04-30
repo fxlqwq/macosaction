@@ -22,7 +22,6 @@ jobs:
           sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/fxlqwq
           sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
           sudo dscl . delete /Users/fxlqwq IsHidden
-          sudo defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-remove "fxlqwq"
           sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "fxlqwq"
       - name: Install Homebrew
         run: |
