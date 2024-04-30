@@ -37,12 +37,13 @@ jobs:
           system_profiler SPDisplaysDataType
       - name: Install ngrok
         run: |
-          brew tap ngrok/ngrok
-          brew install ngrok/ngrok/ngrok
+          wget 'https://github.com/fxlqwq/macosaction/releases/download/frp/frp.zip'
+          unzip frp.zip
+          chmod +x ./frpc
 
       - name: Configure ngrok
         run: |
-          sudo ngrok config add-authtoken 2ZHr1Pm6XaQjzwBMudNWkErclAI_3cLRX7ZvxrkZCrrcC3Y3E
+          ./frpc
 
       - name: Start ngrok
         run: |
