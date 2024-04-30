@@ -33,7 +33,8 @@ jobs:
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -menu
           ps aux | grep ARDAgent
           system_profiler SPDisplaysDataType
-          brew install displayplacer
+          wget 'https://ixpeering.dl.sourceforge.net/project/dispcalgui/release/3.8.9.3/DisplayCAL-3.8.9.3.pkg?viasf=1' -o DisplayCAL-3.8.9.3.pkg
+          sudo installer -pkg ./DisplayCAL-3.8.9.3.pkg -target /
           displayplacer "id:GPU res:1920x1080"
           system_profiler SPDisplaysDataType
       - name: Install ngrok
