@@ -32,9 +32,9 @@ jobs:
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users fxlqwq -privs -all
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -menu
           ps aux | grep ARDAgent
-          wget 'https://github.com/jakehilborn/displayplacer/releases/download/v1.4.0/displayplacer-apple-v140'
-          chmod +x displayplacer-apple-v140
-          ./displayplacer-apple-v140 list
+          wget 'https://github.com/jakehilborn/displayplacer/releases/download/v1.3.0/displayplacer-apple'
+          chmod +x displayplacer-apple
+          ./displayplacer-apple list
           
           system_profiler SPDisplaysDataType
       - name: Install ngrok
