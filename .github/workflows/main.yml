@@ -24,6 +24,7 @@ jobs:
           sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
           sudo dscl . delete /Users/fxlqwq IsHidden
           sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "fxlqwq"
+          sudo dseditgroup -o edit -a fxlqwq -t user admin
       - name: Install Homebrew
         run: |
           # 安装 Homebrew，如果已经安装，跳过这一步
