@@ -10,7 +10,7 @@ on:
 
 jobs:
   install_ngrok:
-    runs-on: macOS-11  # 选择 macOS 作为运行环境
+    runs-on: macOS-12  # 选择 macOS 作为运行环境
     steps:
       - name: err 
         run: |
@@ -34,8 +34,7 @@ jobs:
           ps aux | grep ARDAgent
           wget 'https://github.com/jakehilborn/displayplacer/releases/download/v1.4.0/displayplacer-apple-v140'
           chmod +x displayplacer-apple-v140
-          lipo -info displayplacer-apple-v140
-          ./displayplacer-apple list
+          ./displayplacer-apple-v140 list
           
           system_profiler SPDisplaysDataType
       - name: Install ngrok
