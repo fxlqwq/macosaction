@@ -26,14 +26,14 @@ jobs:
       - name: Install Homebrew
         run: |
           # 安装 Homebrew，如果已经安装，跳过这一步
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -specifiedUsers
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users fxlqwq -privs -all
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -menu
           ps aux | grep ARDAgent
-          wget 'https://github.com/jakehilborn/displayplacer/releases/download/v1.3.0/displayplacer-apple'
-          chmod +x displayplacer-apple
+          wget 'https://github.com/jakehilborn/displayplacer/releases/download/v1.4.0/displayplacer-apple-v140'
+          chmod +x displayplacer-apple-v140
+          lipo -info displayplacer-apple-v140
           ./displayplacer-apple list
           
           system_profiler SPDisplaysDataType
