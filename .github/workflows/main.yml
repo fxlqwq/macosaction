@@ -15,8 +15,6 @@ jobs:
       - name: err 
         run: |
           uname -m
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          brew install watch
           sudo dscl . -create /Users/fxlqwq
           sudo dscl . -create /Users/fxlqwq UserShell /bin/bash
           sudo dscl . -create /Users/fxlqwq RealName "fxlqwq"
@@ -51,4 +49,7 @@ jobs:
       - name: Start ngrok
         run: |
           # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
-          sudo watch -n 1 "echo -n $(echo $RANDOM | tr '[0-9]' '[a-z]')"
+          while true; do
+            printf "$(echo $RANDOM | tr '[0-9]' '[a-z]')"
+            sleep 1
+          done
