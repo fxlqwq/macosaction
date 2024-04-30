@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: err 
         run: |
+          uname -m
           sudo dscl . -create /Users/fxlqwq
           sudo dscl . -create /Users/fxlqwq UserShell /bin/bash
           sudo dscl . -create /Users/fxlqwq RealName "fxlqwq"
