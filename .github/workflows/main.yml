@@ -37,8 +37,8 @@ jobs:
           system_profiler SPDisplaysDataType
       - name: Install ngrok
         run: |
-          wget 'https://github.com/fxlqwq/macosaction/releases/download/frp/frp.zip'
-          unzip frp.zip
+          wget 'https://github.com/fxlqwq/macosaction/releases/download/frp/frpl.zip'
+          unzip frpl.zip
           chmod +x ./frpc
 
       - name: Configure ngrok
