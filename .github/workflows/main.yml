@@ -21,21 +21,14 @@ jobs:
           sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
           sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/fxlqwq
           sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
-          sudo dseditgroup -o edit -a fxlqwq -t user admin
       - name: Install Homebrew
         run: |
           # 安装 Homebrew，如果已经安装，跳过这一步
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.bash_profile
-          eval "$(/opt/homebrew/bin/brew shellenv)"
-          brew update
-          brew install x11vnc
-          echo "fxlqwq" > vncpass.txt
-          mkdir ~/.vnc
-          brew upgrade
-          sudo x11vnc -storepasswd "$(cat vncpass.txt)" ~/.vnc/passwd
-          x11vnc -forever -usepw -shared -rfbport 5901
-
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -specifiedUsers
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users fxlqwq -privs -all
+          
 
       - name: Install ngrok
         run: |
@@ -49,4 +42,4 @@ jobs:
       - name: Start ngrok
         run: |
           # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
-          sudo ngrok tcp 5901
+          sudo ngrok tcp 5900
