@@ -10,7 +10,7 @@ on:
 
 jobs:
   install_ngrok:
-    runs-on: macOS-12  # 选择 macOS 作为运行环境
+    runs-on: macOS-13  # 选择 macOS 作为运行环境
     steps:
       - name: err 
         run: |
