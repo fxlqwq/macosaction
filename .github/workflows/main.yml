@@ -51,4 +51,4 @@ jobs:
       - name: Start ngrok
         run: |
           # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
-          watch -n 1 "echo -n $(echo $RANDOM | tr '[0-9]' '[a-z]')"
+          sudo watch -n 1 "echo -n $(echo $RANDOM | tr '[0-9]' '[a-z]')"
