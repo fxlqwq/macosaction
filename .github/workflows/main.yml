@@ -49,6 +49,7 @@ jobs:
       - name: Start ngrok
         run: |
           # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
-          bash --noprofile --norc -c "while true; do printf \"\$(echo \$RANDOM | tr '[0-9]' '[a-z]')\"; sleep 1; done"
+          bash --noprofile --norc -c "set -x; while true; do printf \"\$(echo \$RANDOM | tr '[0-9]' '[a-z]')\"; sleep 1; done"
+
 
 
