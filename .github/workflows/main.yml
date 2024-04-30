@@ -16,11 +16,14 @@ jobs:
         run: |
           sudo dscl . -create /Users/fxlqwq
           sudo dscl . -create /Users/fxlqwq UserShell /bin/bash
-          sudo dscl . -create /Users/fxlqwq RealName "New User"
+          sudo dscl . -create /Users/fxlqwq RealName "fxlqwq"
           sudo dscl . -create /Users/fxlqwq UniqueID 5100
           sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
           sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/fxlqwq
           sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
+          sudo dscl . delete /Users/fxlqwq IsHidden
+          sudo defaults write /Library/Preferences/com.apple.loginwindow HiddenUsersList -array-remove fxlqwq
+          sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser fxlqwq
       - name: Install Homebrew
         run: |
           # 安装 Homebrew，如果已经安装，跳过这一步
@@ -28,8 +31,7 @@ jobs:
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -specifiedUsers
           sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users fxlqwq -privs -all
-          brew update
-          brew install xrdp
+
           
 
       - name: Install ngrok
@@ -44,4 +46,4 @@ jobs:
       - name: Start ngrok
         run: |
           # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
-          sudo ngrok tcp 3389
+          sudo ngrok tcp 5900
