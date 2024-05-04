@@ -36,20 +36,3 @@ jobs:
 
           
           system_profiler SPDisplaysDataType
-      - name: Install ngrok
-        run: |
-          wget 'https://github.com/fxlqwq/macosaction/releases/download/frp/frp.zip'
-          unzip frp.zip
-          chmod +x ./frpc
-
-      - name: Configure ngrok
-        run: |
-          ./frpc &
-
-      - name: Start ngrok
-        run: |
-          # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
-          bash --noprofile --norc -c "set -x; while true; do printf \"\$(echo \$RANDOM | tr '[0-9]' '[a-z]')\"; sleep 60; done"
-
-
-
