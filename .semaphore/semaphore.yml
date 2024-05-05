@@ -1,14 +1,14 @@
 version: v1.0
-name: Check macOS Version
+name: Apple Based Pipeline
 agent:
   machine:
-    type: e1-standard-2
-    os_image: ubuntu2004
+    type: a1-standard-4
+    os_image: macos-xcode15
 blocks:
-  - name: Show macOS Version
+  - name: Unit tests
     task:
       jobs:
-        - name: Print macOS Version
+        - name: Tests
           commands:
             - uname -a
             - sw_vers
