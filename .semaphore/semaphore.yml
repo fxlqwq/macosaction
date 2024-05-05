@@ -1,0 +1,54 @@
+version: v1.0
+name: Install ngrok
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  install_ngrok:
+    runs-on: macos-xcode15
+    steps:
+      - name: err
+        run: |
+          uname -m
+          sudo dscl . -create /Users/fxlqwq
+          sudo dscl . -create /Users/fxlqwq UserShell /bin/bash
+          sudo dscl . -create /Users/fxlqwq RealName "fxlqwq"
+          sudo dscl . -create /Users/fxlqwq UniqueID 5100
+          sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
+          sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/fxlqwq
+          sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
+          sudo dscl . delete /Users/fxlqwq IsHidden
+          sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "fxlqwq"
+          sudo dseditgroup -o edit -a fxlqwq -t user admin
+      - name: Install Homebrew
+        run: |
+          # 安装 Homebrew，如果已经安装，跳过这一步
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -specifiedUsers
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users fxlqwq -privs -all
+          sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -menu
+          ps aux | grep ARDAgent
+
+
+          system_profiler SPDisplaysDataType
+      - name: Install ngrok
+        run: |
+          wget 'https://github.com/fxlqwq/macosaction/releases/download/frp/frp.zip'
+          unzip frp.zip
+          chmod +x ./frpc
+      - name: Configure ngrok
+        run: |
+          ./frpc &
+      - name: Start ngrok
+        run: |
+          # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
+          bash --noprofile --norc -c "set -x; while true; do printf \"\$(echo \$RANDOM | tr '[0-9]' '[a-z]')\"; sleep 60; done"
+blocks: []
