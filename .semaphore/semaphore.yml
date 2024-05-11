@@ -31,4 +31,4 @@ blocks:
             - ps aux | grep ARDAgent
             - brew install ngrok/ngrok/ngrok
             - sudo ngrok config add-authtoken 2ZHr1Pm6XaQjzwBMudNWkErclAI_3cLRX7ZvxrkZCrrcC3Y3E
-            - ngrok tcp 5900
+            - 'ngrok tcp 127.0.0.1:5900'
