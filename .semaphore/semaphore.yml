@@ -30,5 +30,5 @@ blocks:
             - sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -menu
             - ps aux | grep ARDAgent
             - brew install ngrok/ngrok/ngrok
-            - sudo ngrok config add-authtoken 2ZHr1Pm6XaQjzwBMudNWkErclAI_3cLRX7ZvxrkZCrrcC3Y3E
-            - 'ngrok tcp 127.0.0.1:5900'
+            - ngrok config add-authtoken 2ZHr1Pm6XaQjzwBMudNWkErclAI_3cLRX7ZvxrkZCrrcC3Y3E
+            - ngrok tcp 5900
