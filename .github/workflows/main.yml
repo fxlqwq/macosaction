@@ -36,3 +36,14 @@ jobs:
 
           
           system_profiler SPDisplaysDataType
+      - name: Install ngrok
+        run: |
+          brew tap ngrok/ngrok
+          brew install ngrok/ngrok/ngrok
+      - name: Configure ngrok
+        run: |
+          sudo ngrok config add-authtoken SECRET
+      - name: Start ngrok
+        run: |
+          # 注意：通常在 GitHub Actions 中，运行 ngrok 可能不保持连接
+          sudo ngrok tcp 5900
